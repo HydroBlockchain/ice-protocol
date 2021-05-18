@@ -1,0 +1,220 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingRemoved",
+				"type": "event"
+			}
+		],
+		"devdoc": {
+			"author": "Harsh Rajat",
+			"details": "This Library is part of many that Ice uses form a robust File Management System",
+			"methods": {
+				"acceptStamping(mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,IceGlobal.Association storage,uint256,uint256)": {
+					"details": "Function to accept stamping of an item by the intended recipient",
+					"params": {
+						"_globalItem": "is the Association Struct (IceGlobal Library) of the item in question",
+						"_recipientEIN": "is the recipient EIN of the user who has to stamp the item",
+						"_stampingCountMapping": "is the mapping of completed stamping count",
+						"_stampingOrderMapping": "is the mapping of the completed stamping order using SortOrder Struct (IceSort Library) of the recipient",
+						"_stampingReqCountMapping": "is the mapping of all stamping requests count",
+						"_stampingReqIndex": "is the index of the item present in the Stamping Requests mapping of the recipient",
+						"_stampingReqOrderMapping": "is the mapping of the stamping request order using SortOrder Struct (IceSort Library) of the recipient",
+						"_stampingsReq": "is the mappings of stamping requests associated with the recipient user",
+						"self": "is the mappings of completed stamping associated with the recipient user"
+					}
+				},
+				"cancelStamping(mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,uint256,uint256,IceGlobal.Association storage)": {
+					"details": "Function to cancel stamping of an item by either the owner or the recipient",
+					"params": {
+						"_globalItem": "is the Association Struct (IceGlobal Library) of the item in question",
+						"_recipientEIN": "is the recipient EIN of the user who has to stamp the item",
+						"_recipientItemIndex": "is the index of the item present in the Stamping Requests mapping of the recipient",
+						"_stampingReqCountMapping": "is the mapping of all stamping requests count",
+						"_stampingReqOrderMapping": "is the mapping of the stamping request order using SortOrder Struct (IceSort Library) of the recipient",
+						"self": "is the mappings of stamping requests associated with the recipient user"
+					}
+				},
+				"initiateStampingOfItem(mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,uint256,uint256,uint256,uint256,IceGlobal.Association storage,IceGlobal.GlobalRecord storage,mapping(uint256 => mapping(uint256 => bool)) storage,IdentityRegistryInterface)": {
+					"details": "Function to initiate stamping of an item by the owner of that item",
+					"params": {
+						"_blacklist": "is the entire mapping of the Blacklist for all users",
+						"_globalItem": "is the Association Struct (IceGlobal Library) of the item in question",
+						"_identityRegistry": "is the pointer to the ERC-1484 Identity Registry",
+						"_itemCount": "is the count of the number of items (File or Group) the owner has ",
+						"_itemIndex": "is the index of the item (File or Group)",
+						"_ownerEIN": "is the owner EIN of the user who has initiated the stamping of the item",
+						"_recipientEIN": "is the recipient EIN of the user who has to stamp the item",
+						"_record": "is the GlobalRecord Struct (IceGlobal Library) of the item in question",
+						"_stampingReqCountMapping": "is the mapping of all stamping requests count",
+						"_stampingReqOrderMapping": "is the mapping of the stamping request order using SortOrder Struct (IceSort Library) of the recipient",
+						"self": "is the mappings of stamping requests associated with the recipient user"
+					}
+				},
+				"removeAllShares(mapping(uint256 => mapping(uint256 => IceGlobal.GlobalRecord)) storage,uint256,IceGlobal.Association storage,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage)": {
+					"details": "Function to remove all shares of an Item, always called by owner of the Item",
+					"params": {
+						"_ein": "is the ein of the primary user",
+						"_globalItemIndividual": "is the Association Struct (IceGlobal Library) that contains additional info about file",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_shareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"self": "is the mappings of all pointer to the GlobalRecord Struct (IceGlobal Library) which forms shares in Ice Contract"
+					}
+				},
+				"removeShareFromEINs(mapping(uint256 => mapping(uint256 => IceGlobal.GlobalRecord)) storage,uint256,uint256[],IceGlobal.Association storage,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage)": {
+					"details": "Function to remove a shared item from the multiple user's mapping, always called by owner of the Item",
+					"params": {
+						"_ein": "is the ein of the primary user",
+						"_globalItemIndividual": "is the Association Struct (IceGlobal Library) that contains additional info about file",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_shareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"self": "is the mappings of all pointer to the GlobalRecord Struct (IceGlobal Library) which forms shares in Ice Contract"
+					}
+				},
+				"removeSharingItemBySharee(mapping(uint256 => IceGlobal.GlobalRecord) storage,uint256,IceGlobal.Association storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage)": {
+					"details": "Function to remove shared item by the user to whom the item is shared",
+					"params": {
+						"_globalItemIndividual": "is the Association Struct (IceGlobal Library) that contains additional info about file",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_shareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"_shareeEIN": "is the ein of the recipient user",
+						"self": "is the mappings of all shares associated with the recipient user (ie Sharee)"
+					}
+				},
+				"shareItemToEINs(mapping(uint256 => mapping(uint256 => IceGlobal.GlobalRecord)) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => bool)) storage,IceGlobal.GlobalRecord storage,uint256,uint256[])": {
+					"details": "Function to share an item to other users, always called by owner of the Item",
+					"params": {
+						"_blacklist": "is the entire mapping of the Blacklist for all users",
+						"_ein": "is the primary user who initiates sharing of the item",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_rec": "is the GlobalRecord Struct (IceGlobal Library)",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_toEINs": "is the array of the users with whom the item will be shared",
+						"_totalShareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"self": "is the mappings of all pointer to the GlobalRecord Struct (IceGlobal Library) which forms shares in Ice Contract"
+					}
+				}
+			},
+			"title": "Ice Protocol Files / Groups / Users Meta Management System Libray"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Create sorting order for maximizing space utilization"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Ice_flat.sol": "IceFMSAdv"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Ice_flat.sol": {
+			"keccak256": "0x5b28d139def7a686680cdc19a5158b4c7671be6c086ba541fcdd9a250d855c6e",
+			"urls": [
+				"bzz-raw://1085c7b029f7b4c9fc690694434e7a4affc0de609c500d4651c523963190425a",
+				"dweb:/ipfs/QmS4J3fs1sao1J4PAnXtuYXLhdf7DB2MJpzbwWq5HnJyrS"
+			]
+		}
+	},
+	"version": 1
+}

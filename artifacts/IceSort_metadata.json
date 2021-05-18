@@ -1,0 +1,87 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"author": "Harsh Rajat",
+			"details": "This Library is part of many that Ice uses form a robust File Management System",
+			"methods": {
+				"addToSortOrder(mapping(uint256 => IceSort.SortOrder) storage,uint256,uint256,uint256)": {
+					"details": "Function to facilitate adding of double linked list used to preserve order and form cicular linked list",
+					"params": {
+						"_currentIndex": "is the index which is at the last of the queue",
+						"_maxIndex": "is the highest index present",
+						"_pointerID": "is the ID to which it should point to, pass 0 to calculate on existing logic flow",
+						"self": "is the relevant mapping of SortOrder Struct (IceSort Library) for Files, Groups, Transfers, etc"
+					},
+					"return": "nextIndex is the count of the specific sort order mapping"
+				},
+				"condValidSortOrder(IceSort.SortOrder storage,uint256)": {
+					"details": "Function to check that Group Order is valid",
+					"params": {
+						"_groupOrderIndex": "The index of the group order",
+						"self": "is the specific SortOrder Struct (IceSort Library)"
+					}
+				},
+				"getIndexes(mapping(uint256 => IceSort.SortOrder) storage,uint256,uint16,bool)": {
+					"details": "Private Function to return maximum 20 Indexes of Files, Groups, Transfers, etc based on their SortOrder. 0 is always reserved but will point to Root in Group & Avatar in Files",
+					"params": {
+						"_asc": "is the order, i.e. Ascending or Descending",
+						"_limit": "is the number of files requested | Maximum of 20 can be retrieved",
+						"_seedPointer": "is the pointer (index) of the order mapping",
+						"self": "is the relevant mapping of SortOrder Struct (IceSort Library) for Files, Groups, Transfers, etc"
+					},
+					"return": "sortedIndexes is the indexes returned for Files, Groups, Transfers, etc"
+				},
+				"getOrder(mapping(uint256 => IceSort.SortOrder) storage,uint256)": {
+					"details": "Function to facilitate returning of double linked list used",
+					"params": {
+						"_seedPointer": "is the pointer (index) of the order mapping",
+						"self": "is the relevant mapping of SortOrder Struct (IceSort Library) for Files, Groups, Transfers, etc"
+					},
+					"return": "prev is the previous index in the sort order mapping next is the next index in the sort order mappingpointerID is the pointer index which the sort order is pointing toactive shows whether that particular sort order mapping is active or not"
+				},
+				"stichSortOrder(mapping(uint256 => IceSort.SortOrder) storage,uint256,uint256,uint256)": {
+					"details": "Function to facilitate stiching of double linked list used to preserve order with delete",
+					"params": {
+						"_maxIndex": "is the index which will always be maximum",
+						"_pointerID": "is the ID to which it should point to, pass 0 to calculate on existing logic flow",
+						"_remappedIndex": "is the index which is swapped to from the latest index",
+						"self": "is the relevant mapping of SortOrder Struct (IceSort Library) for Files, Groups, Transfers, etc"
+					},
+					"return": "prevIndex is the count of the specific sort order mapping"
+				}
+			},
+			"title": "Ice Protocol Sort Libray"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Create sorting order for maximizing space utilization"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Ice_flat.sol": "IceSort"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Ice_flat.sol": {
+			"keccak256": "0x5b28d139def7a686680cdc19a5158b4c7671be6c086ba541fcdd9a250d855c6e",
+			"urls": [
+				"bzz-raw://1085c7b029f7b4c9fc690694434e7a4affc0de609c500d4651c523963190425a",
+				"dweb:/ipfs/QmS4J3fs1sao1J4PAnXtuYXLhdf7DB2MJpzbwWq5HnJyrS"
+			]
+		}
+	},
+	"version": 1
+}

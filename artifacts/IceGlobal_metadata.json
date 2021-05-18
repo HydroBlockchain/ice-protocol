@@ -1,0 +1,384 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "condCheckOverflow",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					}
+				],
+				"name": "condCheckUnderflow",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "contract IdentityRegistryInterface",
+						"name": "_identityRegistry",
+						"type": "IdentityRegistryInterface"
+					}
+				],
+				"name": "condEINExists",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_ein2",
+						"type": "uint256"
+					}
+				],
+				"name": "condUniqueEIN",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_ein2",
+						"type": "uint256"
+					}
+				],
+				"name": "condValidEIN",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemCount",
+						"type": "uint256"
+					}
+				],
+				"name": "condValidItem",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					}
+				],
+				"name": "reserveGlobalItemSlot",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "globalIndex1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "globalIndex2",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Harsh Rajat",
+			"details": "This Library is part of many that Ice uses form a robust File Management System",
+			"methods": {
+				"addItemToGlobalItems(mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage,uint256,uint256,uint256,uint256,bool,bool,uint32)": {
+					"details": "Function to add item to global items",
+					"params": {
+						"_index1": "is the first index of the item in relation to globalItems variable",
+						"_index2": "is the second index of the item in relation to globalItems variable",
+						"_isFile": "indicates if the item is a File or a Group",
+						"_isHidden": "indicates if the item has been hidden",
+						"_itemIndex": "is the index at which the item exists on the user mapping",
+						"_ownerEIN": "is the EIN of the user",
+						"_stampingInitiated": "indicates if the item has been stamped or not",
+						"self": "is the entire mapping of globalItems"
+					}
+				},
+				"addToBlacklist(mapping(uint256 => bool) storage,uint256,mapping(uint256 => bool) storage)": {
+					"details": "Function to add a user who is not the owner of the item to blacklist",
+					"params": {
+						"_targetEIN": "is the ein of the target user",
+						"_whitelist": "is the maping entire whitelist of the primary user",
+						"self": "is the mapping of entire blacklist of the primary user"
+					}
+				},
+				"addToGlobalItemsMapping(IceGlobal.Association storage,uint8,uint256,uint256)": {
+					"details": "Function to add items to the global items mapping",
+					"params": {
+						"_itemIndex": "is the index of the item for the non-owner id",
+						"_ofType": "is the associative property type (shared or stamped)",
+						"_toEIN": "is the non-owner id ",
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					},
+					"return": "newCount is the new count of the associative property"
+				},
+				"addToWhitelist(mapping(uint256 => bool) storage,uint256,mapping(uint256 => bool) storage)": {
+					"details": "Function to add a user who is not the owner of the item to whitelist of the primary user",
+					"params": {
+						"_blacklist": "is the maping entire blacklist of the primary user",
+						"_targetEIN": "is the ein of the target user",
+						"self": "is the mapping of entire whitelist of the primary user"
+					}
+				},
+				"condCheckOverflow(uint256)": {
+					"details": "Function to check that overflow doesn't occur",
+					"params": {
+						"index": "is the current index which needs to be checked"
+					}
+				},
+				"condCheckUnderflow(uint256)": {
+					"details": "Function to check that Underflow doesn't occur",
+					"params": {
+						"index": "is the current index which needs to be checked"
+					}
+				},
+				"condEINExists(uint256,IdentityRegistryInterface)": {
+					"details": "Private Function to check that only unique EINs can have access",
+					"params": {
+						"_ein": "is the EIN of the user",
+						"_identityRegistry": "is the IdentityRegistry pointer (ERC-1484)"
+					}
+				},
+				"condItemIsFile(IceGlobal.Association storage)": {
+					"details": "Function to check that an item is file or not",
+					"params": {
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					}
+				},
+				"condItemOwner(IceGlobal.Association storage,uint256)": {
+					"details": "Function to check that only owner of EIN can access this",
+					"params": {
+						"_ein": "is the EIN of the item owner",
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					}
+				},
+				"condNotInList(mapping(uint256 => bool) storage,uint256)": {
+					"details": "Function to check if the user is not in a list (blacklist or whitelist) of primary user",
+					"params": {
+						"_targetEIN": "is the EIN of the user who is getting checked",
+						"self": "is the mapping of entire whitelist or blacklist of the primary user"
+					}
+				},
+				"condStampedItem(IceGlobal.Association storage)": {
+					"details": "Function to check that a item has been marked for stamping",
+					"params": {
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					}
+				},
+				"condUncompleteStamping(IceGlobal.Association storage)": {
+					"details": "Function to check that a item is only marked by stamping from owner",
+					"params": {
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					}
+				},
+				"condUniqueEIN(uint256,uint256)": {
+					"details": "Private Function to check that only unique EINs can have access",
+					"params": {
+						"_ein1": "The First EIN",
+						"_ein2": "The Second EIN"
+					}
+				},
+				"condUnstampedItem(IceGlobal.Association storage)": {
+					"details": "Function to check that a item hasn't been marked for stamping",
+					"params": {
+						"self": "is the Association Struct (IceGlobal library) which contains item properties"
+					}
+				},
+				"condValidEIN(uint256,uint256)": {
+					"details": "Private Function to check that only unique EINs can have access",
+					"params": {
+						"_ein1": "The First EIN",
+						"_ein2": "The Second EIN"
+					}
+				},
+				"condValidItem(uint256,uint256)": {
+					"details": "Function to check if an item exists",
+					"params": {
+						"_itemCount": "is the count of that mapping",
+						"_itemIndex": "the index of the item"
+					}
+				},
+				"deleteGlobalRecord(IceGlobal.Association storage)": {
+					"details": "Function to delete a global items",
+					"params": {
+						"self": "is the Association Struct (IceGlobal library) of the item"
+					}
+				},
+				"findItemOwnerInGlobalItems(mapping(uint8 => IceGlobal.ItemOwner) storage,uint8,uint256)": {
+					"details": "Function to find the relevant mapping index of item mapped for a given EIN",
+					"params": {
+						"_count": "is the count of relative mapping of global item Association",
+						"_searchForEIN": "is the non-owner EIN to search",
+						"self": "is the mapping of ItemOwner to users"
+					},
+					"return": "mappedIndex is the index which is where the relative mapping points to for those itemsownerFound indicates if the owner was found or not"
+				},
+				"getGlobalIndexesViaRecord(IceGlobal.GlobalRecord storage)": {
+					"details": "Function to get global indexes via the Struct GlobalRecord (IceGlobal library)",
+					"params": {
+						"self": "is the GlobalRecord Struct (IceGlobal library) which contains the indexes mapping of the item"
+					},
+					"return": "i1 is the first index mappingi2 is the second index mapping"
+				},
+				"getGlobalItems(IceGlobal.Association storage)": {
+					"details": "Function to get global items info from the entire File Management System of Ice",
+					"params": {
+						"self": "is the Association Struct (IceGlobal) which keeps tracks of item properties"
+					},
+					"return": "ownerEIN is the EIN of the owneritemRecord is the item index mapped for the specific userisFile indicates if the item is a File or a GroupisHidden indicates if the item has been hiddendeleted indicates if the item has been deletedsharedToCount is sharing count of that item"
+				},
+				"getGlobalItemsStampingInfo(IceGlobal.Association storage)": {
+					"details": "Function to get global items stamping info from the entire File Management System of Ice",
+					"params": {
+						"self": "is the Association Struct (IceGlobal) which keeps tracks of item properties"
+					},
+					"return": "stampingRecipient is the EIN of the recipient for whom stamping is requested / denied / completedstampingRecipientIndex is the item index mapped in the mapping of stampingsReq of that recipientstampingInitiated either returns 0 (false) or timestamp when the stamping was initiatedstampingCompleted either returns 0 (false) or timestamp when the stamping was completedstampingRejected indicates if the stamping was rejected by the recipient"
+				},
+				"getHistoralEINsForGlobalItems(mapping(uint8 => IceGlobal.ItemOwner) storage,uint8)": {
+					"details": "Function to get the transfer history of EINs",
+					"params": {
+						"_transferCount": "is the total transfers done for a particular file       ",
+						"self": "is the mapping of ItemOwner to users, useful in keeping a history of transfers"
+					}
+				},
+				"isUserInList(mapping(uint256 => bool) storage,uint256)": {
+					"details": "Function to check if user is in a particular list (blacklist or whitelist) of the primary user",
+					"params": {
+						"_forEIN": "is the ein of the recipient",
+						"self": "is the mapping of entire whitelist / blacklist of the primary user"
+					}
+				},
+				"removeFromBlacklist(mapping(uint256 => bool) storage,uint256,mapping(uint256 => bool) storage)": {
+					"details": "Function to remove a user who is not the owner of the item from blacklist",
+					"params": {
+						"_targetEIN": "is the ein of the target user",
+						"_whitelist": "is the mapiing entire whitelist of the primary user",
+						"self": "is the mapping of entire blacklist of the primary user"
+					}
+				},
+				"removeFromGlobalItemsMapping(IceGlobal.Association storage,uint8,uint8)": {
+					"details": "Private Function to remove from global items mapping",
+					"params": {
+						"_mappedIndex": "is the non-owner mapping of stored item ",
+						"_ofType": "is the associative property type (shared or stamped)",
+						"self": "is the Association Struct (IceGlobal library) which contains item properties     "
+					},
+					"return": "newCount is the new count of the associative property"
+				},
+				"removeFromWhitelist(mapping(uint256 => bool) storage,uint256,mapping(uint256 => bool) storage)": {
+					"details": "Function to remove a user who is not the owner of the item to whitelist of the primary user",
+					"params": {
+						"_blacklist": "is the maping entire blacklist of the primary user",
+						"_targetEIN": "is the ein of the target user",
+						"self": "is the mapping of entire whitelist of the primary user"
+					}
+				},
+				"reserveGlobalItemSlot(uint256,uint256)": {
+					"details": "Function to reserve and return global item slot",
+					"params": {
+						"index1": "is the initial first index of global item",
+						"index2": "is the initial second index of global item "
+					},
+					"return": "globalIndex1 The reserved first index of global itemglobalIndex2 The reserved second index of global item"
+				}
+			},
+			"title": "Ice Protocol Global Items Libray"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Create and handle critical File Management functions"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Ice_flat.sol": "IceGlobal"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Ice_flat.sol": {
+			"keccak256": "0x5b28d139def7a686680cdc19a5158b4c7671be6c086ba541fcdd9a250d855c6e",
+			"urls": [
+				"bzz-raw://1085c7b029f7b4c9fc690694434e7a4affc0de609c500d4651c523963190425a",
+				"dweb:/ipfs/QmS4J3fs1sao1J4PAnXtuYXLhdf7DB2MJpzbwWq5HnJyrS"
+			]
+		}
+	},
+	"version": 1
+}

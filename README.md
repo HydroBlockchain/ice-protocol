@@ -108,3 +108,6 @@ After that, follow these steps:
 ## Documentation
 
 To see details about how to use Remix for developing and/or debugging Solidity contracts, please see [our documentation page](https://remix.readthedocs.io)
+
+## BSC testnet Deployment 
+https://testnet.bscscan.com/address/0xb523db45899af46297bf6e4572834dfd939cdb6e#code

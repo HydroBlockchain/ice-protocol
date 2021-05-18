@@ -1,0 +1,2529 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "snowflakeAddress",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "AddedToBlacklist",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "AddedToWhitelist",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					}
+				],
+				"name": "FileCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "FileDeleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupFileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "FileMoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					}
+				],
+				"name": "FileRenamed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "FileTransferAccepted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "FileTransferInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "FileTransferRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "FileTransferRevoked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "groupName",
+						"type": "string"
+					}
+				],
+				"name": "GroupCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupReplacedIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "GroupDeleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "groupIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "groupName",
+						"type": "string"
+					}
+				],
+				"name": "GroupRenamed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "status",
+						"type": "bool"
+					}
+				],
+				"name": "ItemHidden",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "ItemShareChange",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "RemovedFromBlacklist",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "RemovedFromWhitelist",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "SharingRemoved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "StampingAccepted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "StampingInitiated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "StampingRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "EIN",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index1",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "index2",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "StampingRevoked",
+				"type": "event"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_atRecipientTransferIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_toRecipientGroup",
+						"type": "uint256"
+					}
+				],
+				"name": "acceptFileTransfer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_stampingReqIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "acceptStamping",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_op",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_protocol",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_protocolMeta",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_name",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_hash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes22",
+						"name": "_hashExtraInfo",
+						"type": "bytes22"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_hashFunction",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_hashSize",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bool",
+						"name": "_encrypted",
+						"type": "bool"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_encryptedHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_groupIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "addFile",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_nonOwnerEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "addToBlacklist",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_nonOwnerEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "addToWhitelist",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "blacklist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "_name",
+						"type": "bytes32"
+					}
+				],
+				"name": "changeFileName",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_groupName",
+						"type": "string"
+					}
+				],
+				"name": "createGroup",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "deleteFile",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_groupIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "deleteGroup",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "fileCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "fileOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_seedPointer",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_limit",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bool",
+						"name": "_asc",
+						"type": "bool"
+					}
+				],
+				"name": "getFileIndexes",
+				"outputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "fileIndexes",
+						"type": "uint256[20]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getFileInfo",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "protocol",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bytes",
+						"name": "protocolMeta",
+						"type": "bytes"
+					},
+					{
+						"internalType": "string",
+						"name": "fileName",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "fileHash",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes22",
+						"name": "hashExtraInfo",
+						"type": "bytes22"
+					},
+					{
+						"internalType": "uint8",
+						"name": "hashFunction",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "hashSize",
+						"type": "uint8"
+					},
+					{
+						"internalType": "bool",
+						"name": "encryptedStatus",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getFileOtherInfo",
+				"outputs": [
+					{
+						"internalType": "uint32",
+						"name": "timestamp",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "associatedGroupIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "associatedGroupFileIndex",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getFileTransferInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "transCount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "transEIN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "transIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "forTrans",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_transferCount",
+						"type": "uint256"
+					}
+				],
+				"name": "getFileTransferOwners",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index2",
+						"type": "uint256"
+					}
+				],
+				"name": "getGlobalItems",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "ownerEIN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "itemRecord",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isFile",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isHidden",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "deleted",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "sharedToCount",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_ofType",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_mappedIndex",
+						"type": "uint8"
+					}
+				],
+				"name": "getGlobalItemsMapping",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "mappedToEIN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "atIndex",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index2",
+						"type": "uint256"
+					}
+				],
+				"name": "getGlobalItemsStampingInfo",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "stampingRecipient",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stampingRecipientIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint32",
+						"name": "stampingInitiated",
+						"type": "uint32"
+					},
+					{
+						"internalType": "uint32",
+						"name": "stampingCompleted",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bool",
+						"name": "stampingRejected",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_groupIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getGroup",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "index",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_groupIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_seedPointer",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_limit",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bool",
+						"name": "_asc",
+						"type": "bool"
+					}
+				],
+				"name": "getGroupFileIndexes",
+				"outputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "groupFileIndexes",
+						"type": "uint256[20]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ein",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_seedPointer",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint16",
+						"name": "_limit",
+						"type": "uint16"
+					},
+					{
+						"internalType": "bool",
+						"name": "_asc",
+						"type": "bool"
+					}
+				],
+				"name": "getGroupIndexes",
+				"outputs": [
+					{
+						"internalType": "uint256[20]",
+						"name": "groupIndexes",
+						"type": "uint256[20]"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "globalIndex1",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "globalIndex2",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "groupCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "groupOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_index2",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isHidden",
+						"type": "bool"
+					}
+				],
+				"name": "hideGlobalItem",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "identityRegistry",
+				"outputs": [
+					{
+						"internalType": "contract IdentityRegistryInterface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_transfereeEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "initiateFileTransfer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isFile",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_recipientEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "initiateStampingOfItem",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_newGroupIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "moveFileToGroup",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_atRecipientTransferIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "rejectFileTransfer",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_recipientItemIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "rejectStamping",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_nonOwnerEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "removeFromBlacklist",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_nonOwnerEIN",
+						"type": "uint256"
+					}
+				],
+				"name": "removeFromWhitelist",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "_fromEINs",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isFile",
+						"type": "bool"
+					}
+				],
+				"name": "removeShareFromEINs",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "removeSharingItemBySharee",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_groupIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_groupName",
+						"type": "string"
+					}
+				],
+				"name": "renameGroup",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_transfereeEIN",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fileIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "revokeFileTransfer",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_ownerItemIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isFile",
+						"type": "bool"
+					}
+				],
+				"name": "revokeStamping",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "shareCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": false,
+				"inputs": [
+					{
+						"internalType": "uint256[]",
+						"name": "_toEINs",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_itemIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_isFile",
+						"type": "bool"
+					}
+				],
+				"name": "shareItemToEINs",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "shareOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "shares",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "i1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "i2",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [],
+				"name": "snowflake",
+				"outputs": [
+					{
+						"internalType": "contract SnowflakeInterface",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampingCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampingOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampingReqCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampingReqOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampings",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "i1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "i2",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "stampingsReq",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "i1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "i2",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transferCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transferOrder",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "next",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "prev",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "pointerID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "active",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "transfers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "i1",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "i2",
+						"type": "uint256"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "usermeta",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "hasAvatar",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "whitelist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"payable": false,
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Harsh Rajat",
+			"details": "This Contract forms File Storage / Stamping / Encryption part of Hydro Protocols",
+			"methods": {
+				"acceptFileTransfer(uint256,uint256)": {
+					"details": "Function to accept file transfer from a user",
+					"params": {
+						"_atRecipientTransferIndex": "is the file mapping stored no the recipient transfers mapping",
+						"_toRecipientGroup": "is the index of the group where the file is suppose to be for the recipient"
+					}
+				},
+				"acceptStamping(uint256)": {
+					"details": "Function to accept stamping of an item by the intended recipient",
+					"params": {
+						"_stampingReqIndex": "is the index of the item present in the Stamping Requests mapping of the recipient"
+					}
+				},
+				"addToBlacklist(uint256)": {
+					"details": "Remove a non-owner user to blacklist",
+					"params": {
+						"_nonOwnerEIN": "is the ein of the recipient"
+					}
+				},
+				"addToWhitelist(uint256)": {
+					"details": "Add a non-owner user to whitelist",
+					"params": {
+						"_nonOwnerEIN": "is the ein of the recipient"
+					}
+				},
+				"createGroup(string)": {
+					"details": "Function to create a new Group for the user",
+					"params": {
+						"_groupName": "describes the name of the group"
+					}
+				},
+				"deleteGroup(uint256)": {
+					"details": "Function to delete an existing group for the user / ein",
+					"params": {
+						"_groupIndex": "describes the associated index of the group for the user / ein"
+					}
+				},
+				"getFileIndexes(uint256,uint256,uint16,bool)": {
+					"details": "Function to get the desired amount of files indexes (max 20 at times) of an EIN, the 0 indicates ",
+					"params": {
+						"_asc": "is the order by which the files will be presented",
+						"_ein": "is the EIN of the user",
+						"_limit": "is the limit of file indexes requested",
+						"_seedPointer": "is the seed of the order from which it should begin"
+					},
+					"return": "fileIndexes is the array of file indexes for the specified users"
+				},
+				"getFileInfo(uint256,uint256)": {
+					"details": "Function to get file info of an EIN",
+					"params": {
+						"_ein": "is the owner EIN",
+						"_fileIndex": "is index of the file"
+					},
+					"return": "protocol is the protocol used for storing that file (for example: 1 is IPFS, etc, etc). Used to fetch file from JS LibraryprotocolMeta contains the additional essential infomation about the protocol if anyname is the name of the file along with the extensionhash1 is the       "
+				},
+				"getFileOtherInfo(uint256,uint256)": {
+					"details": "Function to get file info of an EIN",
+					"params": {
+						"_ein": "is the owner EIN",
+						"_fileIndex": "is index of the file"
+					}
+				},
+				"getFileTransferInfo(uint256,uint256)": {
+					"details": "Function to get file tranfer info of an EIN",
+					"params": {
+						"_ein": "is the owner EIN",
+						"_fileIndex": "is index of the file"
+					}
+				},
+				"getFileTransferOwners(uint256,uint256,uint256)": {
+					"details": "Function to get file tranfer owner info of an EIN",
+					"params": {
+						"_ein": "is the owner EIN",
+						"_fileIndex": "is index of the file",
+						"_transferCount": "is index to poll"
+					}
+				},
+				"getGlobalItems(uint256,uint256)": {
+					"details": "Function to get global items info from the entire File Management System of Ice",
+					"params": {
+						"_index1": "is the first index of item",
+						"_index2": "is the second index of item"
+					},
+					"return": "ownerEIN is the EIN of the user who owns the itemitemRecord is the record of that item in relation to the individual userisFile indicates if the item is file or groupisHidden indicates if the item is hidder or visibledeleted indicates if the item is already deleted from the individual user perspectivesharedToCount is the count of sharing the item has"
+				},
+				"getGlobalItemsMapping(uint256,uint256,uint8,uint8)": {
+					"details": "Function to get info of mapping to user for a specific global item",
+					"params": {
+						"_index1": "is the first index of global item",
+						"_index2": "is the second index of global item",
+						"_mappedIndex": "is the index",
+						"_ofType": "indicates the type. 0 - shares, 1 - stampings"
+					},
+					"return": "mappedToEIN is the user (EIN)atIndex is the specific index in question, only returns on shares typestimestamp is the time when the file was stamped by the EIN, only returns on stamping types"
+				},
+				"getGlobalItemsStampingInfo(uint256,uint256)": {
+					"details": "Function to get global items stamping info from the entire File Management System of Ice",
+					"params": {
+						"_index1": "is the first index of item",
+						"_index2": "is the second index of item"
+					},
+					"return": "stampingRecipient is the EIN of the recipient for whom stamping is requested / denied / completedstampingRecipientIndex is the item index mapped in the mapping of stampingsReq of that recipientstampingInitiated either returns 0 (false) or timestamp when the stamping was initiatedstampingCompleted either returns 0 (false) or timestamp when the stamping was completedstampingRejected indicates if the stamping was rejected by the recipient"
+				},
+				"getGroup(uint256,uint256)": {
+					"details": "Function to return group info for an EIN",
+					"params": {
+						"_ein": "the EIN of the user",
+						"_groupIndex": "the index of the group"
+					},
+					"return": "index is the index of the groupname is the name associated with the group"
+				},
+				"getGroupFileIndexes(uint256,uint256,uint256,uint16,bool)": {
+					"details": "Function to get all the files of an EIN associated with a group",
+					"params": {
+						"_asc": "is the order by which the files will be presented",
+						"_ein": "is the owner EIN",
+						"_groupIndex": "is the index where group is stored",
+						"_limit": "is the limit of file indexes requested",
+						"_seedPointer": "is the seed of the order from which it should begin"
+					}
+				},
+				"getGroupIndexes(uint256,uint256,uint16,bool)": {
+					"details": "Function to return group indexes used to retrieve info about group",
+					"params": {
+						"_asc": "is the order of group indexes in Ascending or Descending order",
+						"_ein": "the EIN of the user",
+						"_limit": "is the number of indexes to return, capped at 20",
+						"_seedPointer": "is the pointer (index) of the order mapping"
+					},
+					"return": "groupIndexes the indexes of the groups associated with the ein in the preferred order"
+				},
+				"hideGlobalItem(uint256,uint256,bool)": {
+					"details": "Function to get global items",
+					"params": {
+						"_index1": "is the first index of item",
+						"_index2": "is the second index of item",
+						"_isHidden": "is the flag to hide that item or not "
+					}
+				},
+				"initiateFileTransfer(uint256,uint256)": {
+					"details": "Function to intiate file transfer to another EIN(user)",
+					"params": {
+						"_fileIndex": "is the index of file for the original user's EIN",
+						"_transfereeEIN": "is the recipient user's EIN"
+					}
+				},
+				"initiateStampingOfItem(uint256,bool,uint256)": {
+					"details": "Function to initiate stamping of an item by the owner of that item",
+					"params": {
+						"_isFile": "indicates if the item is File or Group",
+						"_itemIndex": "is the index of the item (File or Group)",
+						"_recipientEIN": "is the recipient EIN of the user who has to stamp the item"
+					}
+				},
+				"rejectFileTransfer(uint256)": {
+					"details": "Function to revoke file transfer inititated by the current owner of that file",
+					"params": {
+						"_atRecipientTransferIndex": "is the file mapping stored no the recipient transfers mapping"
+					}
+				},
+				"rejectStamping(uint256)": {
+					"details": "Function to reject stamping of an item only by the recipient",
+					"params": {
+						"_recipientItemIndex": "is the index of the item present in the Stamping Requests mapping of the recipient"
+					}
+				},
+				"removeFromBlacklist(uint256)": {
+					"details": "Remove a non-owner user from blacklist",
+					"params": {
+						"_nonOwnerEIN": "is the ein of the recipient"
+					}
+				},
+				"removeFromWhitelist(uint256)": {
+					"details": "Remove a non-owner user from whitelist",
+					"params": {
+						"_nonOwnerEIN": "is the ein of the recipient"
+					}
+				},
+				"removeShareFromEINs(uint256[],uint256,bool)": {
+					"details": "Function to remove a shared item from the multiple user's mapping, always called by owner of the Item",
+					"params": {
+						"_fromEINs": "are the EINs to which the item should be removed from sharing",
+						"_isFile": "indicates if the item is file or group ",
+						"_itemIndex": "is the index of the item on the owner's mapping"
+					}
+				},
+				"removeSharingItemBySharee(uint256)": {
+					"details": "Function to remove shared item by the user to whom the item is shared",
+					"params": {
+						"_itemIndex": "is the index of the item in shares"
+					}
+				},
+				"renameGroup(uint256,string)": {
+					"details": "Function to rename an existing Group for the user / ein",
+					"params": {
+						"_groupIndex": "describes the associated index of the group for the user / ein",
+						"_groupName": "describes the new name of the group"
+					}
+				},
+				"revokeFileTransfer(uint256,uint256)": {
+					"details": "Function to revoke file transfer inititated by the current owner of that file",
+					"params": {
+						"_fileIndex": "is the index where file is stored",
+						"_transfereeEIN": "is the EIN of the user to whom the file needs to be transferred"
+					}
+				},
+				"revokeStamping(uint256,bool)": {
+					"details": "Function to revoke stamping of an item only by the owner ",
+					"params": {
+						"_isFile": "indicates if the item is File or Group",
+						"_ownerItemIndex": "is the index of the item (File or Group) in relation to the owner of the item "
+					}
+				},
+				"shareItemToEINs(uint256[],uint256,bool)": {
+					"details": "Function to share an item to other users, always called by owner of the Item",
+					"params": {
+						"_isFile": "indicates if the item is file or group",
+						"_itemIndex": "is the index of the item to be shared to",
+						"_toEINs": "are the array of EINs which the item should be shared to"
+					}
+				}
+			},
+			"title": "Ice Protocol"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Create Protocol Less File Storage, Grouping, Hassle free Encryption / Decryption and Stamping using Snowflake"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"contracts/Ice.sol": "Ice"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"contracts/Ice.sol": {
+			"keccak256": "0xf530e59c16261ab3a5c333faf19589ef8dd05833dc68e6f7973a54e2b85f3a7f",
+			"urls": [
+				"bzz-raw://161c704accf1719e825f8a13aa6708e32a7efda51840565599d8e9c308e02128",
+				"dweb:/ipfs/QmdibcC3KcMA1mPCf4st9yBsdMUCpdZUteH77xwrQskFEL"
+			]
+		},
+		"contracts/IceFMS.sol": {
+			"keccak256": "0xbbde418bbbc2ef1719498269122bacffdb9c3db74817b9ef202223efae520c86",
+			"urls": [
+				"bzz-raw://b1124fe3c583a8ad13e52845e2bdb1be88873ec248f0a37072db4a46fe837723",
+				"dweb:/ipfs/QmR57cKmbFrHHb4rxNHgf9nJBrogooJdhNHV7uZZPGWWWy"
+			]
+		},
+		"contracts/IceFMSAdv.sol": {
+			"keccak256": "0x7c71f245a4ff650a748d833f92ec63483ed56f037cd1fdd9f47145dcc5aa5fe5",
+			"urls": [
+				"bzz-raw://6a7d9e835775747375aaa54b53403b996ccc7b137c7bc2e83c069031e392d82e",
+				"dweb:/ipfs/QmPLHSsgW6QByMM3uNF2LSNgHvu4T7oiK4KMPcYVVb3Xv5"
+			]
+		},
+		"contracts/IceGlobal.sol": {
+			"keccak256": "0x2fbbb1e904af0995eb81802994dbcc16dabfef0f115a254254d8ccbb838b20d1",
+			"urls": [
+				"bzz-raw://1dac7bc58c778bf5019a12968a84294a6666f2beccc98b46bbc94dc39474e3f1",
+				"dweb:/ipfs/QmV3mc5DemjN7pByRyPycJPyzhqteUwjb8V8ycrEtnAEmk"
+			]
+		},
+		"contracts/IceSort.sol": {
+			"keccak256": "0xaf066b81abe344ddebcbb71b2061a754c40e57200f6c0451291c63fc80ce4b30",
+			"urls": [
+				"bzz-raw://ec4cea43932392aa51617fe65197b5e60d4e99e272dc9e19adc63c9c88997b03",
+				"dweb:/ipfs/QmYPVbDyfH6TL8h1v9X5JexM4FRNKZb8PEM13p7C4Ef1jv"
+			]
+		},
+		"contracts/IdentityRegistryInterface.sol": {
+			"keccak256": "0xd2b778e3fd124e5f1d5ed190f01bd69e8c691bae3bb95d29c91c49e8155da436",
+			"urls": [
+				"bzz-raw://ebc425ea579ac1f6e1f6466219d992d959a1cb501f0167482c7a4ccf7646b87e",
+				"dweb:/ipfs/QmPUZeniUuMzMA6FcfXdDBU3R3XMUEQTjNFL92pJvUQwCP"
+			]
+		},
+		"contracts/SafeMath.sol": {
+			"keccak256": "0x2cee2f0a5f7c68ece40aa1641b34177859058b4b3d74f243112c96f0bff7d54b",
+			"urls": [
+				"bzz-raw://f2b0cad26ec863f3772bbebd99460df0d96c57eaf486e195ea402a2542d6d515",
+				"dweb:/ipfs/QmXQTSLmasfkBa5ttJeWMAGedKTV1ZErhMLkkBCJDhWHbz"
+			]
+		},
+		"contracts/SafeMath8.sol": {
+			"keccak256": "0xfcc8a733470131987624686730c69ecbda91a06fb5551d705d42cd11992ec55c",
+			"urls": [
+				"bzz-raw://003b7a56b80808d6dfdf3d8f779af314772a931d2c1b4420354430805b12698d",
+				"dweb:/ipfs/QmeHSac82jQ6ChQE3rVze55JHNmz8vbepRVLgCzYTWrTov"
+			]
+		},
+		"contracts/SnowflakeInterface.sol": {
+			"keccak256": "0x939a1e74fab994f6fd874077f8efbaeaa688ac19ea8a17e9f8797710cefdf611",
+			"urls": [
+				"bzz-raw://8733af7e6a36d482a9b33a6720ea656eb470eeea5946a1bd0bcc618e945bc0c5",
+				"dweb:/ipfs/QmdrHWJaEoTktAPn5pnGc6363wsXvgC8CZ5DZztMnTd5eZ"
+			]
+		}
+	},
+	"version": 1
+}

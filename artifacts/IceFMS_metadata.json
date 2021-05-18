@@ -1,0 +1,383 @@
+{
+	"compiler": {
+		"version": "0.5.17+commit.d19bba13"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "_x",
+						"type": "bytes32"
+					}
+				],
+				"name": "bytes32ToString",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "result",
+						"type": "string"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_index",
+						"type": "uint256"
+					}
+				],
+				"name": "condNonReservedItem",
+				"outputs": [],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"constant": true,
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_source",
+						"type": "string"
+					}
+				],
+				"name": "stringToBytes32",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "result",
+						"type": "bytes32"
+					}
+				],
+				"payable": false,
+				"stateMutability": "pure",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"author": "Harsh Rajat",
+			"details": "This Library is part of many that Ice uses form a robust File Management System",
+			"methods": {
+				"acceptFileTransferPart1(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,uint256)": {
+					"details": "Function to accept file transfer (part 1) from a user",
+					"params": {
+						"_fileIndex": "is the index where file is stored",
+						"_transfereeEIN": "is the EIN to which the file will be transferred",
+						"_transfererEIN": "is the previous(current) owner EIN",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					}
+				},
+				"acceptFileTransferPart2(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to accept file transfer (part 2) from a user",
+					"params": {
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_transferCountMapping": "is the mapping of the entire transfer count for every user",
+						"_transferOrderMapping": "is the mapping of the order of transfers for the transferee user's FMS",
+						"_transferSpecificIndex": "is the index of the transfer mapping of the recipient which contains transfer info for that file",
+						"_transfereeEIN": "is the EIN to which the file will be transferred",
+						"_transfersMapping": "is the mapping of all transfers for the transferee's FMS",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					}
+				},
+				"addFileToGroup(IceFMS.Group storage,uint256,uint256)": {
+					"details": "Private Function to add file to a group",
+					"params": {
+						"_fileIndex": "is the index of the file belonging to that user",
+						"_groupIndex": "is the index of the group belonging to that user, 0 is reserved for root",
+						"self": "is the pointer to the relevant Group Struct (IceFMS Library) to which the file has to bee added"
+					},
+					"return": "associatedGroupIndex is the group index of within the mapping of groups for the specific userassociatedGroupFileIndex is the index where the file is placed within that group in the specific user's FMS"
+				},
+				"bytes32ToString(bytes32)": {
+					"details": "Helper Function to convert bytes32 to string format",
+					"params": {
+						"_x": "is the bytes32 format which needs to be converted"
+					},
+					"return": "result is the string representation of that bytes32 string"
+				},
+				"cancelFileTransfer(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,uint256,mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to cancel file transfer inititated by the current owner and / or recipient",
+					"params": {
+						"_fileIndex": "is the index where file is stored",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_transferCountMapping": "is the mapping of the entire transfer count for every user",
+						"_transferOrderMapping": "is the mapping of the order of transfers for the transferee user's FMS",
+						"_transfereeEIN": "is the EIN to which the file will be transferred",
+						"_transfererEIN": "is the previous(current) owner EIN",
+						"_transfersMapping": "is the mapping of all transfers for the transferee's FMS",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					}
+				},
+				"condGroupEmpty(IceFMS.Group storage)": {
+					"details": "Function to check that Group Order is valid",
+					"params": {
+						"self": "is the particular group in question"
+					}
+				},
+				"condItemMarkedForTransfer(IceFMS.File storage)": {
+					"details": "Function to check that a file has been marked for transfer"
+				},
+				"condMarkedForTransferee(IceFMS.File storage,uint256)": {
+					"details": "Function to check that a file has been marked for transferee EIN",
+					"params": {
+						"_transfereeEIN": "is the intended EIN for file transfer"
+					}
+				},
+				"condNonReservedItem(uint256)": {
+					"details": "Function to check that ID = 0 is not modified as it's reserved item",
+					"params": {
+						"_index": "The index to check"
+					}
+				},
+				"createFileMetaObject(IceFMS.File storage,uint8,bytes32,bytes32,bytes22,uint8,uint8,bool)": {
+					"details": "Function to create a File Meta Object and attach it to File Struct (IceFMS Library)",
+					"params": {
+						"_encrypted": "indicates if the file is encrypted or not  ",
+						"_hash": "is the hash of the file (useful for IPFS and to verify authenticity)",
+						"_hashExtraInfo": "is the extra info which can be stored in a 22 byte format (if required)",
+						"_hashFunction": "is the function used to generate the hash",
+						"_hashSize": "is the size of the digest",
+						"_name": "is the name of the file with the extension",
+						"_protocol": "is type of protocol used to store that file (0 - URL, 1- IPFS)",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					}
+				},
+				"createFileObject(IceFMS.File storage,bytes,uint256,uint256)": {
+					"details": "Function to create a basic File Object for a given file",
+					"params": {
+						"_protocolMeta": "is the meta info which is stored for a certain protocol",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "_groupIndex is the index of the group where the file is stored_groupFilesCount is the number of files stored in that group "
+				},
+				"createGroup(mapping(uint256 => IceFMS.Group) storage,uint256,string,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage,uint256,uint256)": {
+					"details": "Function to create a new Group for the user",
+					"params": {
+						"_ein": "is the EIN of the primary user",
+						"_globalIndex1": "is the initial first index of global items",
+						"_globalIndex2": "is the initial second index of global items",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_groupCountMapping": "is the mapping of the file count of all the users",
+						"_groupName": "is the name which should be given to the group",
+						"_groupOrderMapping": "is the mapping of the Groups Struct (IceFMS Library) of the primary user's FMS",
+						"self": "is the mapping of all pointer to the Group Struct (IceFMS Library) passed for a user's FMS"
+					},
+					"return": "newGlobalIndex1 is the new first index of global itemsnewGlobalIndex2 is the new second index of global itemsnextGroupIndex is the new count of the group index after creating a group"
+				},
+				"deleteFile(mapping(uint256 => IceFMS.File) storage,uint256,uint256,IceGlobal.Association storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,IceFMS.Group storage,IceSort.SortOrder storage,mapping(uint256 => mapping(uint256 => IceGlobal.GlobalRecord)) storage,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage)": {
+					"details": "Function to delete file of the owner",
+					"params": {
+						"_ein": "is the EIN of the primary user",
+						"_fileCountMapping": "is the mapping of the file count of all the users",
+						"_fileGroup": "is the Group Struct (IceFMS Library) under which the file in question is stored",
+						"_fileGroupOrder": "is the SortOrder Struct (IceSort Library) which points to the order of the file in the user's group",
+						"_fileIndex": "is the index where file is stored",
+						"_fileOrderMapping": "is the mapping of the files of the primary user's FMS",
+						"_globalItemIndividual": "is the Association Struct (IceGlobal Library) that contains additional info about file",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_totalShareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"_totalSharesMapping": "is the mapping of the entire shares",
+						"self": "is the mapping of all pointer to the File Struct (IceFMS Library) passed for a user's FMS"
+					}
+				},
+				"deleteGroup(mapping(uint256 => IceFMS.Group) storage,uint256,uint256,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.GlobalRecord)) storage,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to delete an existing group for the user / ein",
+					"params": {
+						"_ein": "is the EIN of the user",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_groupCountMapping": "is the mapping of the file count of all the users",
+						"_groupIndex": "describes the associated index of the group for the user / ein",
+						"_groupOrderMapping": "is the mapping of the Groups Struct (IceFMS Library) of the primary user's FMS",
+						"_shareCountMapping": "is the mapping of all share count",
+						"_totalShareOrderMapping": "is the mapping of the entire shares order using SortOrder Struct (IceSort Library)",
+						"_totalSharesMapping": "is the mapping of the entire shares",
+						"self": "is the mapping of all pointer to the Group Struct (IceFMS Library) passed for a user's FMS"
+					}
+				},
+				"doFileTransferPart1(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,uint256,mapping(uint256 => mapping(uint256 => IceSort.SortOrder)) storage,mapping(uint256 => uint256) storage)": {
+					"details": "Function to do file transfer(Part 1) from previous (current) owner to new owner",
+					"params": {
+						"_fileCountMapping": "is the mapping of the file count of all the users",
+						"_fileIndex": "is the index where file is stored",
+						"_totalFilesOrderMapping": "is the entire mapping of the files order of the Ice FMS",
+						"_transfereeEIN": "is the EIN of the user to whom the file needs to be transferred",
+						"_transfererEIN": "is the previous(current) owner EIN",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					},
+					"return": "nextTransfereeIndex is the index number where the file is stored in the recipient user's File Struct mapping "
+				},
+				"doFileTransferPart2(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,uint256,uint256,uint256,mapping(uint256 => mapping(uint256 => IceFMS.Group)) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to do file transfer(Part 2) from previous (current) owner to new owner",
+					"params": {
+						"_fileIndex": "is the index where file is stored",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_nextTransfereeIndex": "is the index number where the file is stored in the recipient user's File Struct mapping",
+						"_recipientGroupCount": "is the number of groups present in the recipient's user FMS system",
+						"_toRecipientGroup": "is the intended group of the recipient user where the file should go",
+						"_totalGroupsMapping": "is the entire mapping of all the groups in Ice FMS",
+						"_transfereeEIN": "is the EIN of the user to whom the file needs to be transferred",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					}
+				},
+				"doInitiateFileTransferChecks(mapping(uint256 => mapping(uint256 => IceFMS.File)) storage,uint256,uint256,uint256,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceFMS.Group)) storage,mapping(uint256 => mapping(uint256 => bool)) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage,IdentityRegistryInterface)": {
+					"details": "Function to check file transfer conditions before initiating a file transfer ",
+					"params": {
+						"_blacklist": "is the entire mapping of the Blacklist for all users",
+						"_fileCountMapping": "is the mapping of the file count of all the users",
+						"_fileIndex": "is the index where the file is stored with respect to the user who is transferring the file",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_identityRegistry": "is the pointer to the ERC-1484 Identity Registry",
+						"_totalGroupsMapping": "is the entire mapping of the groups of the Ice FMS",
+						"_transfereeEIN": "is the EIN to which the file will be transferred",
+						"_transfererEIN": "is the EIN which is transferring the file ",
+						"self": "is the entire mapping of all the pointers to the File Struct (IceFMS Library)"
+					}
+				},
+				"doPermissionedFileTransfer(IceFMS.File storage,uint256,mapping(uint256 => IceGlobal.GlobalRecord) storage,mapping(uint256 => IceSort.SortOrder) storage,mapping(uint256 => uint256) storage,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to initiate requested file transfer in a permissioned manner",
+					"params": {
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_transferCountMapping": "is the mapping of the entire transfer count for every user",
+						"_transferOrderMapping": "is the mapping of the order of transfers for the transferee user's FMS",
+						"_transfereeEIN": "is the EIN to which the file will be transferred",
+						"_transfers": "is the mapping of all transfers for the transferee's FMS",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					}
+				},
+				"getFileInfo(IceFMS.File storage)": {
+					"details": "Function to get file info of an EIN",
+					"params": {
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "protocol returns the protocol used for storage of the file (0 - URL, 1 - IPFS)protocolMeta returns the meta info associated with a protocolfileName is the name of the filefileHash is the Hash of the filehashExtraInfo is extra info stored as part of the protocol used hashFunction is the function used to store that hashhashSize is the size of the digestencryptedStatus indicates if the file is encrypted or not "
+				},
+				"getFileOtherInfo(IceFMS.File storage)": {
+					"details": "Function to get file info of an EIN",
+					"params": {
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "timestamp indicates the timestamp of the fileassociatedGroupIndex indicates the group which the file is associated to in the user's FMSassociatedGroupFileIndex indicates the file index within the group of the user's FMS"
+				},
+				"getFileTransferInfo(IceFMS.File storage)": {
+					"details": "Function to get file tranfer info of an EIN",
+					"params": {
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "transferCount indicates the number of times the file has been transferredtransferEIN indicates the EIN of the user to which the file is currently scheduled for transfertransferIndex indicates the transfer index of the target EIN where the file is currently mapped tomarkedForTransfer indicates if the file is marked for transfer or not"
+				},
+				"getFileTransferOwners(IceFMS.File storage,uint256)": {
+					"details": "Function to get file tranfer owner info of an EIN",
+					"params": {
+						"_transferIndex": "is index to poll which is useful to get the history of transfers and to what EIN the file previously belonged to",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "previousOwnerEIN is the EIN of the user who had originally owned that file"
+				},
+				"getGroup(IceFMS.Group storage,uint256,uint256)": {
+					"details": "Function to return group info",
+					"params": {
+						"_groupCount": "is the count of the number of groups for that specific user",
+						"_groupIndex": "the index of the group",
+						"self": "is the pointer to the Group Struct (IceFMS Library) passed"
+					},
+					"return": "index is the index of the groupname is the name associated with the group"
+				},
+				"moveFileToGroup(IceFMS.File storage,uint256,mapping(uint256 => IceFMS.Group) storage,mapping(uint256 => IceSort.SortOrder) storage,uint256,mapping(uint256 => mapping(uint256 => IceGlobal.Association)) storage)": {
+					"details": "Function to move file to another group",
+					"params": {
+						"_fileIndex": "is the file index in the user's FMS files mapping",
+						"_globalItems": "is the mapping of all items stored by all users in the Ice FMS",
+						"_groupMapping": "is the mapping of all groups for the user's FMS",
+						"_groupOrderMapping": "is the mapping of the order of files in that group for the primary user's FMS",
+						"_newGroupIndex": "is the index of the new group where file has to be moved",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "groupFileIndex is the index of the file stored in that relevant group of the primary user "
+				},
+				"remapFileToGroup(IceFMS.File storage,uint256,IceFMS.Group storage,IceFMS.Group storage,uint256)": {
+					"details": "Private Function to remap file from one group to another",
+					"params": {
+						"_existingFileIndex": "is the file index in the user's FMS files mapping",
+						"_newGroup": "is the pointer to the new group where the file will be moved in the user's FMS",
+						"_newGroupIndex": "is the index of the new group where file has to be moved",
+						"_oldGroup": "is the pointer to the old group where the file was present in the user's FMS",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					},
+					"return": "groupFileIndex is the index of the file stored in that relevant group of the primary user "
+				},
+				"removeFileFromGroup(IceFMS.Group storage,uint256)": {
+					"details": "Function to remove file from a group",
+					"params": {
+						"_groupFileOrderIndex": "is the index of the file order within that group",
+						"self": "is the pointer to the relevant Group Struct (IceFMS Library) which has the file in the primary user's FMS"
+					}
+				},
+				"renameGroup(IceFMS.Group storage,uint256,uint256,string)": {
+					"details": "Function to rename an existing group for the user / ein",
+					"params": {
+						"_groupCount": "is the count of the number of groups for that specific user",
+						"_groupIndex": "the index of the group",
+						"_groupName": "describes the new name of the group",
+						"self": "is the pointer to the Group Struct (IceFMS Library) passed"
+					}
+				},
+				"stringToBytes32(string)": {
+					"details": "Helper Function to convert string to bytes32 format",
+					"params": {
+						"_source": "is the string which needs to be converted"
+					},
+					"return": "result is the bytes32 representation of that string"
+				},
+				"writeFile(IceFMS.File storage,IceFMS.Group storage,uint256,mapping(uint256 => IceSort.SortOrder) storage,uint256,uint256,uint256,bytes32)": {
+					"details": "Function to write file to a user FMS",
+					"params": {
+						"_encryptedHash": "is the encrypted hash stored incase the file is encrypted",
+						"_groupIndex": "indicates the index of the group for the EIN's FMS",
+						"_maxFileIndex": "indicates the maximum index of the files stored for the primary user (EIN)",
+						"_nextIndex": "indicates the next index which will store the particular file in question",
+						"_transferEin": "is the EIN of the user for which the file is getting written to, defaults to primary user",
+						"_userFileOrderMapping": "is the mapping of the user's file order using SortOrder Struct (IceSort Library)",
+						"group": "is the pointer to the group where the file is going to be stored for the primary user (EIN)",
+						"self": "is the pointer to the File Struct (IceFMS Library) passed"
+					}
+				}
+			},
+			"title": "Ice Protocol Files / Groups / Users Meta Management System Libray"
+		},
+		"userdoc": {
+			"methods": {},
+			"notice": "Create sorting order for maximizing space utilization"
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Ice_flat.sol": "IceFMS"
+		},
+		"evmVersion": "istanbul",
+		"libraries": {},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Ice_flat.sol": {
+			"keccak256": "0x5b28d139def7a686680cdc19a5158b4c7671be6c086ba541fcdd9a250d855c6e",
+			"urls": [
+				"bzz-raw://1085c7b029f7b4c9fc690694434e7a4affc0de609c500d4651c523963190425a",
+				"dweb:/ipfs/QmS4J3fs1sao1J4PAnXtuYXLhdf7DB2MJpzbwWq5HnJyrS"
+			]
+		}
+	},
+	"version": 1
+}
