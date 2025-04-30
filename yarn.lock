@@ -1579,9 +1579,9 @@ balanced-match@^1.0.0:
   integrity sha1-ibTRmasr7kneFk6gK4nORi1xt2c=
 
 base-x@^3.0.2:
-  version "3.0.7"
-  resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.7.tgz#1c5a7fafe8f66b4114063e8da102799d4e7c408f"
-  integrity sha512-zAKJGuQPihXW22fkrfOclUUZXM2g92z5GzlSMHxhO6r6Qj+Nm0ccaGNBzDZojzwOMkpjAv4J0fOv1U4go+a4iw==
+  version "3.0.11"
+  resolved "https://registry.yarnpkg.com/base-x/-/base-x-3.0.11.tgz#40d80e2a1aeacba29792ccc6c5354806421287ff"
+  integrity sha512-xz7wQ8xDhdyP7tQxwdteLYeFfS68tSMNCZ/Y37WJ4bhGfKPpqEIlmIyueQHqOyoPhE6xNUqjzRr8ra0eF9VRvA==
   dependencies:
     safe-buffer "^5.0.1"
 
@@ -3598,9 +3598,10 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66":
+"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66":
   version "3.3.2"
-  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66"
+  uid d47ffccf932962295a1feb74334d3ab8d0b17a66
+  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66"
   dependencies:
     he "^1.1.1"
     mime "^1.6.0"
