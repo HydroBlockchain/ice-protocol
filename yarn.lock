@@ -3598,9 +3598,10 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66":
+"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66":
   version "3.3.2"
-  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66"
+  uid d47ffccf932962295a1feb74334d3ab8d0b17a66
+  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66"
   dependencies:
     he "^1.1.1"
     mime "^1.6.0"
@@ -10547,9 +10548,9 @@ shebang-regex@^1.0.0:
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
 shell-quote@^1.4.2, shell-quote@^1.6.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.7.1.tgz#3161d969886fb14f9140c65245a5dd19b6f0b06b"
-  integrity sha512-2kUqeAGnMAu6YrTPX4E3LfxacH9gKljzVjlkUeSqY0soGwK4KLl7TURXCem712tkhBCeeaFP9QK4dKn88s3Icg==
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/shell-quote/-/shell-quote-1.8.3.tgz#55e40ef33cf5c689902353a3d8cd1a6725f08b4b"
+  integrity sha512-ObmnIF4hXNg1BqhnHmgbDETF8dLPCggZWBjkQfhZpbszZnYur5DUljTcCHii5LC3J5E0yeO/1LIMyH+UvHQgyw==
 
 shelljs@^0.7.5:
   version "0.7.8"
