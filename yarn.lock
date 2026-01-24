@@ -3598,9 +3598,10 @@ ecc-jsbn@~0.1.1:
     jsbn "~0.1.0"
     safer-buffer "^2.1.0"
 
-"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66":
+"ecstatic@git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66":
   version "3.3.2"
-  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic.git#d47ffccf932962295a1feb74334d3ab8d0b17a66"
+  uid d47ffccf932962295a1feb74334d3ab8d0b17a66
+  resolved "git+https://github.com/Blackbaud-ShaydeNofziger/node-ecstatic#d47ffccf932962295a1feb74334d3ab8d0b17a66"
   dependencies:
     he "^1.1.1"
     mime "^1.6.0"
@@ -7579,9 +7580,9 @@ lodash.toarray@^4.4.0:
   integrity sha1-JMS/zWsvuji/0FlNsRedjptlZWE=
 
 lodash@^4.0.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.4, lodash@^4.17.5, lodash@^4.2.1, lodash@^4.3.0:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.23"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.23.tgz#f113b0378386103be4f6893388c73d0bde7f2c5a"
+  integrity sha512-LgVTMpQtIopCi79SJeDiP0TfWi5CNEc/L/aRdTh3yIvmZXTnheWpKjSZhnvMl8iXbC1tFg9gdHHDMLoV7CnG+w==
 
 logform@^2.1.1:
   version "2.1.2"
